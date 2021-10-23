@@ -1,20 +1,20 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable unicorn/no-process-exit */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-import fs from 'fs-jetpack';
-import path from 'path';
+import fs from 'fs-extra';
 import fetch from 'node-fetch';
 import { pipeline } from 'stream';
 import { promisify } from 'util';
 import dotenv from 'dotenv';
 import unzipper from 'unzipper';
 
-const unzipOutputPath = path.join(__dirname, '..', 'data');
+import { folderNames } from './paths.mjs';
 
-const folderNames = ['Cataclysm-DDA-master', 'Kenan-Modpack-Chinese'].map((p) => path.join(unzipOutputPath, p));
 // see if we have all files already, if so, skip this script to save bandwidth
-if (await Promise.all(folderNames.map((p) => fs.existsAsync(p)))) {
+if ((await Promise.all(folderNames.map((p) => fs.pathExists(p)))).every((r) => r === true)) {
   console.log('All file existed');
   process.exit(0);
 }

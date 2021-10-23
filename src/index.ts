@@ -1,1 +1,1 @@
-export * from './preloadKenanPackData';
+export * from './cddaJSONWithNameAndDescription';
