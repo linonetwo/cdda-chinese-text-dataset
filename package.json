@@ -1,6 +1,6 @@
 {
   "name": "cdda-chinese-text-dataset",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "翻译过的中文 CDDA 文本数据集，去掉了知识图谱部分和数值部分，只保留物品名字、描述等文本。 ",
   "main": "dist/index.mjs",
   "scripts": {
@@ -20,6 +20,7 @@
     "type": "git",
     "url": "git+https://github.com/linonetwo/cdda-chinese-text-dataset.git"
   },
+  "types": "dist/index.d.ts",
   "files": [
     "dist/**/*",
     "README.md"
